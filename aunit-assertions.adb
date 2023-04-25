@@ -29,6 +29,8 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
+with AUnit.Time_Measure;
+
 package body AUnit.Assertions is
 
    Failures         : Failure_Lists.List;
@@ -204,6 +206,25 @@ package body AUnit.Assertions is
    begin
       return The_Current_Test;
    end Current_Test;
+
+   procedure Record_Assertion
+     (R              : in out AUnit.Test_Results.Result'class;
+      Test_Name      : Message_String;
+      Routine_Name   : Message_String;
+      Failure        : AUnit.Test_Results.Test_Failure) is
+
+   begin
+      Add_Failure (
+         R              => R,
+         Test_Name      => Test_Name,
+         Routine_Name   => Routine_Name,
+         Failure        => Failure,
+         Elapsed        => AUnit.Time_Measure.Null_Time);
+--    Failure_Lists.Append
+--      (Failures,
+--       (Failure => (Format (Message), Format (Source), Line),
+--        Id      => The_Current_Test.Id));
+   end Record_Assertion;
 
    ----------------------
    -- Set_Current_Test --

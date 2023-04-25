@@ -44,9 +44,12 @@ package AUnit.Test_Suites is
    type Access_Test_Suite is access all Test_Suite'Class;
 
    procedure Add_Test (S : access Test_Suite'Class;
-                       T : access Test_Suite'Class);
+                       T : access Test_Suite'Class
+   ) with pre => S /= Null and T /= Null;
+
    procedure Add_Test (S : access Test_Suite'Class;
-                       T : access AUnit.Simple_Test_Cases.Test_Case'Class);
+                       T : access AUnit.Simple_Test_Cases.Test_Case'Class
+   ) with pre => S /= Null and T /= Null;
    --  Add a test case or suite to this suite
 
    procedure Run (Suite   : access Test_Suite;

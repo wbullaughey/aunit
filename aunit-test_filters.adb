@@ -28,9 +28,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
---with Ada.Tags;
 with AUnit.Simple_Test_Cases;  use AUnit.Simple_Test_Cases;
---with CAC.Tags;
 with CAC.Trace; use CAC.Trace;
 
 package body AUnit.Test_Filters is
@@ -57,6 +55,7 @@ package body AUnit.Test_Filters is
 
    procedure Set_Name (Filter : in out Name_Filter; Name : String) is
    begin
+      Log_Here (Debug, Quote (" Name", Name));
       Message_Free (Filter.Name);
       Filter.Name := Format (Name);
    end Set_Name;
@@ -69,31 +68,50 @@ package body AUnit.Test_Filters is
      (Filter : Name_Filter;
       T      : AUnit.Tests.Test'Class) return Boolean is
    begin
+      Log_In (Debug, "Filter " & Image (Filter'address) &
+         (if Filter.Name = Null then " no filter name " else " filter name '" &Filter.Name.all & "' ") &
+         "tag " &tag_name (T'tag) & " test address " & Image_Pointer (T'address));
+
       if Filter.Name = null
         or else Filter.Name.all = ""
       then
+         Log_Here (Debug, " no fiter its active");
          return True;
       end if;
-
-log (here, who & " filter name '" & Filter.Name.all & "'");
 
       if T not in AUnit.Simple_Test_Cases.Test_Case'Class
         or else Name (AUnit.Simple_Test_Cases.Test_Case'Class (T)) = null
       then
          --  There is no name, so it doesn't match the filter
+         Log_Here (Debug, " inactive");
          return False;
       end if;
 
       if Routine_Name (AUnit.Simple_Test_Cases.Test_Case'Class (T)) = null then
-         return Starts_With
-           (Name (AUnit.Simple_Test_Cases.Test_Case'Class (T)).all,
-            Filter.Name.all);
+         declare
+            Test_Name            : constant String := Name (AUnit.Simple_Test_Cases.Test_Case'Class (T)).all;
+            Result               : constant Boolean := Starts_With (Test_Name, Filter.Name.all);
+
+         begin
+            Log_Here (Debug, " Test_NameTest_Name " & Quote (Test_Name) &
+               " filter " & Quote (Filter.Name.all) & " result " & Result'img);
+            return Result;
+         end;
       else
-         return Starts_With
-           (Name (AUnit.Simple_Test_Cases.Test_Case'Class (T)).all
-            & " : "
-            & Routine_Name (AUnit.Simple_Test_Cases.Test_Case'Class (T)).all,
-            Filter.Name.all);
+         declare
+            Test_Name            : constant String := Name (AUnit.Simple_Test_Cases.Test_Case'Class (T)).all;
+            Test_Routine_Name    : constant String := Routine_Name (AUnit.Simple_Test_Cases.Test_Case'Class (T)).all;
+            Test_Filter          : constant String := Test_Name & " : " & Test_Routine_Name;
+            Result               : constant Boolean := Starts_With (Test_Filter, Filter.Name.all);
+
+        begin
+            Log_Here (Debug, " Test_Name " & Quote (Test_Name) &
+               " test filter " & Quote (Test_Filter) &
+               " test routine name " & Quote (Test_Routine_Name) &
+               " filter " & Quote (Filter.Name.all) &
+               " result " & Result'img);
+            return Result;
+         end;
       end if;
    end Is_Active;
 

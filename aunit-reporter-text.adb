@@ -31,7 +31,7 @@
 
 with GNAT.IO;            use GNAT.IO;
 with AUnit.Time_Measure; use AUnit.Time_Measure;
-with cac.trace;use cac.trace;
+with CAC.Trace; use CAC.Trace;
 
 --  Very simple reporter to console
 package body AUnit.Reporter.Text is
@@ -212,13 +212,16 @@ package body AUnit.Reporter.Text is
    procedure Report_Test (Test : Test_Result; Prefix : String) is
       T : AUnit_Duration;
    begin
+      Log_In (Debug);
       Put (Prefix);
       Put (" ");
       Put (Test.Test_Name.all);
-
+      Log_Here (Debug);
       if Test.Routine_Name /= null then
          Put (" : ");
          Put (Test.Routine_Name.all);
+      else
+         Log_Here (Debug, "no routine name");
       end if;
 
       if Test.Elapsed /= Time_Measure.Null_Time then
@@ -274,6 +277,7 @@ package body AUnit.Reporter.Text is
 
          New_Line;
       end if;
+      Log_Out (Debug);
    end Report_Test;
 
 end AUnit.Reporter.Text;

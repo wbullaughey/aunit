@@ -126,6 +126,12 @@ package AUnit.Assertions is
    --  Copy From's Id to To so that failures reported via To are identified as
    --  belonging to From.
 
+   procedure Record_Assertion
+     (R              : in out AUnit.Test_Results.Result'class;
+      Test_Name      : Message_String;
+      Routine_Name   : Message_String;
+      Failure        : AUnit.Test_Results.Test_Failure);
+
 private
    use AUnit.Test_Results;
 

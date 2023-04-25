@@ -38,7 +38,7 @@ with AUnit.Tests;
 package AUnit.Test_Filters is
 
    type Test_Filter is abstract tagged limited private;
-   type Test_Filter_Access is access all Test_Filter'Class;
+   type Test_Filter_Access is access constant Test_Filter'Class;
    function Is_Active
      (Filter : Test_Filter;
       T      : AUnit.Tests.Test'Class) return Boolean is abstract;

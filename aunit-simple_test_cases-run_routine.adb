@@ -34,6 +34,7 @@ with Ada.Exceptions;          use Ada.Exceptions;
 with GNAT.Traceback.Symbolic; use GNAT.Traceback.Symbolic;
 
 with AUnit.Time_Measure;
+--with CAC.Trace;use CAC.Trace;
 
 separate (AUnit.Simple_Test_Cases)
 
@@ -50,9 +51,8 @@ is
    use Time_Measure;
 
 begin
-
    --  Reset failure list to capture failed assertions for one routine
-
+   Log_In (Debug);
    Clear_Failures (Test.all);
 
    begin
@@ -106,5 +106,5 @@ begin
          end loop;
       end;
    end if;
-
+   Log_Out (Debug);
 end Run_Routine;

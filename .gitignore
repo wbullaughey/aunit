@@ -1,0 +1,21 @@
+not_used
+workspace
+db_daemon_gps*
+save
+list-db_view.txt
+*.ali
+*.adbx
+*.adsx
+aunit copy
+aunit.try1
+.DS_Store
+*.vpwwildcardcache
+*.vtg
+*.vpwhistu
+list-ada_lib.txt
+x86_64-apple*
+*.lexch
+arm64-apple-darwin*
+aunit/tests/sent.txt
+GNAT*
+bin

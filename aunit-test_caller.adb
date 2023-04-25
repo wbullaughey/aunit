@@ -32,7 +32,6 @@
 with Ada.Unchecked_Conversion;
 with AUnit.Assertions;
 with AUnit.Memory.Utils;
-with CAC.Trace; use CAC.Trace;
 
 package body AUnit.Test_Caller is
 

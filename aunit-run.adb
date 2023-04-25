@@ -31,7 +31,7 @@
 
 with AUnit.Time_Measure;
 with AUnit.Test_Suites; use AUnit.Test_Suites;
---with cac.trace; use cac.trace;
+with cac.trace; use cac.trace;
 
 package body AUnit.Run is
 
@@ -57,6 +57,8 @@ package body AUnit.Run is
       Time    : Time_Measure.Time;
 
    begin
+      Log (Debug, Who, Here);
+
       if Options.Global_Timer then
          Time_Measure.Start_Measure (Time);
       end if;

@@ -44,7 +44,9 @@ package body AUnit.Test_Cases is
 
    procedure Add_Routine (T : in out Test_Case'Class; Val : Routine_Spec) is
    begin
+      Log_In (Debug, Quote ("routine name", Val.Routine_Name));
       Routine_Lists.Append (T.Routines, Val);
+      Log_Out (Debug);
    end Add_Routine;
 
    --------------
@@ -70,10 +72,11 @@ package body AUnit.Test_Cases is
       Result : Status;
       C      : Cursor;
    begin
+      cac.trace.Log (Debug, cac.trace.here, "run options " & Image (Options'address) &
+         (if Options.Filter = null then " no filter" else " have filter " & Image (Options.Filter.all'address)));
       Outcome := Success;
       Routine_Lists.Clear (Test.Routines);
       Register_Tests (Test_Case'Class (Test.all));
-
       Set_Up_Case (Test_Case'Class (Test.all));
       C := First (Test.Routines);
 
@@ -103,6 +106,10 @@ package body AUnit.Test_Cases is
 
    function Routine_Name (Test : Test_Case) return Message_String is
    begin
+      Log_In (Debug, (if Test.Routine.Routine_Name = Null then
+            "routine name not set"
+         else
+            Test.Routine.Routine_Name.all));
       return Test.Routine.Routine_Name;
    end Routine_Name;
 

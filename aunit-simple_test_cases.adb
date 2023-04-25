@@ -29,6 +29,8 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
+with Ada.Exceptions;
+with Ada.Text_IO;
 with AUnit.Assertions;   use AUnit.Assertions;
 with AUnit.Options;      use AUnit.Options;
 with AUnit.Test_Filters; use AUnit.Test_Filters;
@@ -59,6 +61,7 @@ package body AUnit.Simple_Test_Cases is
    function Routine_Name (Test : Test_Case) return Message_String is
       pragma Unreferenced (Test);
    begin
+      Log_In (Debug, "not overridden");
       return null;
    end Routine_Name;
 
@@ -93,7 +96,14 @@ package body AUnit.Simple_Test_Cases is
       Outcome :    out Status)
    is
       Old : constant Test_Access := AUnit.Assertions.Current_Test;
+      Setup_Completed : Boolean := True;
    begin
+      Log_In (Debug, Quote (" suite", Test_Case'class (Test.all).Name) &
+         Quote (" routine", Test_Case'class (Test.all).Routine_Name));
+--     " tag " &tag_name (Test_Case'class(Test.all)'tag) &
+--       " test address " & Image_Pointer (Test.all'address));
+      Ada.Text_IO.Put_Line ("run" & Quote (" suite", Test_Case'class (Test.all).Name) &
+         Quote (" routine", Test_Case'class (Test.all).Routine_Name));
       Outcome := Success;
       if Options.Filter = null
         or else Is_Active (Options.Filter.all, Test.all)
@@ -103,11 +113,30 @@ package body AUnit.Simple_Test_Cases is
          Start_Test (R, 1);
 
          --  Run test routine
-         Set_Up (Test_Case'Class (Test.all));
-         Run_Routine (Test, Options, R, Outcome);
+         begin
+            Set_Up (Test_Case'Class (Test.all));
+
+         exception
+            when Fault: others =>
+               Setup_Completed := False;
+               Trace_Exception (Fault);
+               AUnit.Assertions.Record_Assertion (R, Test_Case'class (Test.all).Name,
+                  Test_Case'class (Test.all).Routine_Name,
+                  (Format ("exception:" & Ada.Exceptions.Exception_Name (Fault)),
+                   Format ("message:" & Ada.Exceptions.Exception_Message (Fault)), 0));
+         end;
+
+         if Setup_Completed then
+               Log_Here (Debug);
+               Run_Routine (Test, Options, R, Outcome);
+               Log_Here (Debug);
+         end if;
          Tear_Down (Test_Case'Class (Test.all));
          AUnit.Assertions.Set_Current_Test (Old);
+      else
+         Log (Debug, Here, Who);
       end if;
+      Log_Here (Debug, " outcome " & Outcome'img);
    end Run;
 
 end AUnit.Simple_Test_Cases;

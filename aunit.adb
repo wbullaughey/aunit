@@ -30,10 +30,13 @@
 ------------------------------------------------------------------------------
 
 with Ada.Unchecked_Conversion;
-with System.Storage_Elements;  use System.Storage_Elements;
 with AUnit.Memory;             use AUnit.Memory;
+with CAC.Trace; use CAC.Trace;
+with System.Storage_Elements;  use System.Storage_Elements;
 
 package body AUnit is
+
+   use type System.Storage_Elements.Storage_Offset;
 
    type Bounds is record
       First : Natural;
@@ -76,7 +79,8 @@ package body AUnit is
    procedure Message_Free (Msg : in out Message_String) is
    begin
       if Msg /= null then
-         AUnit.Memory.AUnit_Free (Msg.all'Address);
+         AUnit.Memory.AUnit_Free (Msg.all'address - System.Address'size/8);
+--       AUnit.Memory.AUnit_Free (Msg.all'address - Bounds’Object_Size / 8);
          Msg := null;
       end if;
    end Message_Free;
@@ -95,4 +99,7 @@ package body AUnit is
       return Ptr;
    end Format;
 
+begin
+--Debug := True;
+   Log_Out (Elaborate or Debug);
 end AUnit;

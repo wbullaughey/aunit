@@ -28,7 +28,7 @@
 -- This unit was originally developed by Matthew J Heaney.                  --
 ------------------------------------------------------------------------------
 
-pragma Ada_2005;
+--pragma Ada_2005;
 
 with System;  use type System.Address;
 

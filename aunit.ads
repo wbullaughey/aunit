@@ -45,4 +45,5 @@ package AUnit is
    function Message_Alloc (Length : Natural) return Message_String;
    procedure Message_Free (Msg : in out Message_String);
 
+   Debug                         : aliased Boolean := False;
 end AUnit;

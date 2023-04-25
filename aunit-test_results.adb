@@ -30,6 +30,7 @@
 ------------------------------------------------------------------------------
 
 with AUnit.Memory.Utils;
+with CAC.Trace; use CAC.Trace;
 
 --  Record test results.
 
@@ -217,7 +218,10 @@ package body AUnit.Test_Results is
       use Result_Lists;
 
    begin
+      Log_In (Debug, Quote ("Test_Name", Test_Name) &
+         Quote (" Routine_Name", Routine_Name));
       Append (R.Result_List, Val);
+      Log_Out (Debug);
    end Add_Success;
 
    -----------------
@@ -291,7 +295,10 @@ package body AUnit.Test_Results is
 
    procedure Start_Test (R : in out Result; Subtest_Count : Count_Type) is
    begin
+      Log_In (Debug, "Tests_Run" & R.Tests_Run'img &
+         " Subtest_Count" & Subtest_Count'img);
       R.Tests_Run := R.Tests_Run + Subtest_Count;
+      Log_Out (Debug);
    end Start_Test;
 
    -------------------
