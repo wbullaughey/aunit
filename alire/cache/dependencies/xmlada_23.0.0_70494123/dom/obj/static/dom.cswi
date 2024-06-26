@@ -1,0 +1,10 @@
+20230503130512
+-c
+-x
+ada
+-gnatA
+-gnatwua
+-gnaty
+-gnatQ
+-O2
+-gnatn

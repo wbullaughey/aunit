@@ -1,22 +1,33 @@
-with "base";
-with "ada_lib";
-with "root";
+--with "ada_lib";
+with "applications.gpr";
+with "config/aunit_config.gpr";
+with "default_config";
 
-library project AUnit is
+project Aunit is
 
-   for Languages use ("Ada");
-   for Object_Dir use Root.Object_Directory;
-   for Library_Name use "aunit";
-   for Library_Kind use Base.Library_Kind;
-   for Library_Dir use Root.Library_Directory;
-   for Source_Dirs use (".");
+   for Library_Name use "Aunit";
+   for Library_Version use Project'Library_Name & ".so." & Aunit_Config.Crate_Version;
 
-   package Compiler renames Root.Compiler;
+   for Source_Dirs use ("src/", "ada_lib/src", "config/");
+   for Object_Dir use "obj/" & Aunit_Config.Build_Profile;
+   for Create_Missing_Dirs use "True";
+   for Library_Dir use "lib";
 
--- package Install is
---    for Active use "True";
--- end Install;
---
--- for Externally_Built use "False";
+   type Library_Type_Type is ("relocatable", "static", "static-pic");
+   Library_Type : Library_Type_Type :=
+     external ("AUNIT_LIBRARY_TYPE", external ("LIBRARY_TYPE", "static"));
+   for Library_Kind use Library_Type;
 
-end AUnit;
+   package Compiler is
+      for Default_Switches ("Ada") use Default_Config.Ada_Compiler_Switches;
+   end Compiler;
+
+   package Binder is
+      for Switches ("Ada") use ("-Es"); --  Symbolic traceback
+   end Binder;
+
+   package Install is
+      for Artifacts (".") use ("share");
+   end Install;
+
+end Aunit;

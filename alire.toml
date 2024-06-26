@@ -1,0 +1,21 @@
+name = "aunit"
+description = "aunit tests"
+version = "0.1.0-dev"
+project-files = ["aunit.gpr"]
+
+authors = ["Wayne Bullaughey"]
+maintainers = ["Wayne Bullaughey <wlb122@verizon.net>"]
+maintainers-logins = ["wbullaughey"]
+
+[[depends-on]]
+ada_lib = "*"
+
+[[pins]]
+ada_lib = { path = "../ada_lib" }
+
+[[depends-on]]
+applications = "*"
+
+[[pins]]
+applications = { path = ".." }
+
