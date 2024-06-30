@@ -19,3 +19,4 @@ arm64-apple-darwin*
 aunit/tests/sent.txt
 GNAT*
 bin
+obj/
