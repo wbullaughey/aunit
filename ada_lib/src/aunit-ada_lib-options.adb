@@ -24,12 +24,13 @@ package body AUnit.Ada_Lib.Options is
    ----------------------------------------------------------------------------
    overriding
    function Initialize (
-     Options                     : in out AUnit_Options_Type
+     Options                     : in out AUnit_Options_Type;
+     From                        : in     String := Standard.Ada_Lib.Trace.Here
    ) return Boolean is
    ----------------------------------------------------------------------------
 
    begin
-      Log_In (Debug or Trace_Options);
+      Log_In (Debug or Trace_Options, "from " & From);
       Standard.Ada_Lib.Runstring_Options.Options.Register (
          Standard.Ada_Lib.Runstring_Options.With_Parameters,
          Options_With_Parameters);
@@ -91,8 +92,8 @@ package body AUnit.Ada_Lib.Options is
       case Help_Mode is
 
       when Standard.Ada_Lib.Options.Program =>
-            Standard.Ada_Lib.Help.Add_Option ('A', "trace options",
-               "AUnit traces", "AUnit library");
+            Standard.Ada_Lib.Help.Add_Option (Trace_Option, "trace options",
+               "AUnit library traces", "AUnit library");
 
       when Standard.Ada_Lib.Options.Traces =>
          Put_Line ("AUnit.Ada_Lib.Options library trace options (-" & Trace_Option & ")");

@@ -2,6 +2,7 @@
 with Ada_Lib.Command_Line_Iterator;
 with Ada_Lib.Options;
 with Ada_Lib.Options_Interface;
+with Ada_Lib.Trace;
 
 --pragma Warnings (On, "GNOGA");
 -- needs to bin in ada_lib directory so gnoga can include it
@@ -19,7 +20,8 @@ package AUnit.Ada_Lib.Options is
 
    overriding
    function Initialize (
-     Options                     : in out AUnit_Options_Type
+     Options                     : in out AUnit_Options_Type;
+     From                        : in     String := Standard.Ada_Lib.Trace.Here
    ) return Boolean
    with pre => Options.Verify_Preinitialize;
 

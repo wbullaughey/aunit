@@ -72,7 +72,7 @@ package body AUnit.Simple_Test_Cases is
    procedure Set_Up (Test : in out Test_Case) is
       pragma Unreferenced (Test);
    begin
-      null;
+      Log_Here (Debug);
    end Set_Up;
 
    ---------------
