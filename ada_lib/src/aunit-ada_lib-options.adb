@@ -1,8 +1,8 @@
 with Ada.Text_IO; use Ada.Text_IO;
---with Ada_Lib.Command_Line_Iterator;
-with Ada_Lib.Help;
+--with Ada_Lib.Options;
+with Ada_Lib.Options.Help;
 with Ada_Lib.Trace; use Ada_Lib.Trace;
-with Ada_Lib.Runstring_Options;
+with Ada_Lib.Options.Runstring;
 --with Debug_Options;
 
 --pragma Elaborate_All (Standard.Ada_Lib.Command_Line_Iterator);
@@ -12,14 +12,14 @@ package body AUnit.Ada_Lib.Options is
    Debug_Options                 : aliased Boolean := False;
    Trace_Option                  : constant Character := 'A';
    Options_With_Parameters       : aliased constant
-                                    Standard.Ada_Lib.Options_Interface.
+                                    Standard.Ada_Lib.Options.
                                        Options_Type :=
-                                          Standard.Ada_Lib.Options_Interface.
+                                          Standard.Ada_Lib.Options.
                                              Create_Options (Trace_Option);
    Options_Without_Parameters    : aliased constant
-                                    Standard.Ada_Lib.Options_Interface.
+                                    Standard.Ada_Lib.Options.
                                        Options_Type := Standard.Ada_Lib.
-                                          Options_Interface.Null_Options;
+                                          Options.Null_Options;
 
    ----------------------------------------------------------------------------
    overriding
@@ -31,11 +31,11 @@ package body AUnit.Ada_Lib.Options is
 
    begin
       Log_In (Debug or Trace_Options, "from " & From);
-      Standard.Ada_Lib.Runstring_Options.Options.Register (
-         Standard.Ada_Lib.Runstring_Options.With_Parameters,
+      Standard.Ada_Lib.Options.Runstring.Options.Register (
+         Standard.Ada_Lib.Options.Runstring.With_Parameters,
          Options_With_Parameters);
-      Standard.Ada_Lib.Runstring_Options.Options.Register (
-         Standard.Ada_Lib.Runstring_Options.Without_Parameters,
+      Standard.Ada_Lib.Options.Runstring.Options.Register (
+         Standard.Ada_Lib.Options.Runstring.Without_Parameters,
          Options_Without_Parameters);
       Log_Out (Debug or Trace_Options);
       return True;
@@ -45,14 +45,13 @@ package body AUnit.Ada_Lib.Options is
    overriding
    function Process_Option (
       Options                    : in out AUnit_Options_Type;
-      Iterator                   : in out Standard.Ada_Lib.Command_Line_Iterator.
-                                             Abstract_Package.Abstract_Iterator_Type'class;
-      Option                     : in     Standard.Ada_Lib.Options_Interface.
-                                             Option_Type'class
+      Iterator                   : in out Standard.Ada_Lib.Options.
+                                             Command_Line_Iterator_Interface'class;
+      Option                     : in     Standard.Ada_Lib.Options.Option_Type'class
    ) return Boolean is
    ----------------------------------------------------------------------------
 
-      use Standard.Ada_Lib.Options_Interface;
+      use Standard.Ada_Lib.Options;
 
    begin
       Log_In (Debug or Trace_Options, Option.Image);
@@ -92,7 +91,7 @@ package body AUnit.Ada_Lib.Options is
       case Help_Mode is
 
       when Standard.Ada_Lib.Options.Program =>
-            Standard.Ada_Lib.Help.Add_Option (Trace_Option, "trace options",
+            Standard.Ada_Lib.Options.Help.Add_Option (Trace_Option, "trace options",
                "AUnit library traces", "AUnit library");
 
       when Standard.Ada_Lib.Options.Traces =>
@@ -112,7 +111,7 @@ package body AUnit.Ada_Lib.Options is
    overriding
    procedure Trace_Parse (
       Options                    : in out AUnit_Options_Type;
-      Iterator                   : in out Standard.Ada_Lib.Command_Line_Iterator.Abstract_Package.Abstract_Iterator_Type'class) is
+      Iterator                   : in out Standard.Ada_Lib.Options.Command_Line_Iterator_Interface'class) is
    ----------------------------------------------------------------------------
 
       Parameter                  : constant String := Iterator.Get_Parameter;

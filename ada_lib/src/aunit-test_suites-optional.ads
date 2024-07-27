@@ -2,7 +2,7 @@ with Ada_Lib.Options;
 
 package AUnit.Test_Suites.Optional is
 
--- use type Ada_Lib.Options.Program_Options_Constant_Class_Access;
+-- use type Ada_Lib.Options.Actual.Program_Options_Constant_Class_Access;
 
    type Test_Suite_Type is abstract new AUnit.Test_Suites.Test_Suite with null record;
    type Access_Test_Suite is access all Test_Suite_Type'Class;

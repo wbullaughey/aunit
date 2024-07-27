@@ -1,22 +1,21 @@
 --with Ada_Lib.Database;
-with Ada_Lib.Command_Line_Iterator;
-with Ada_Lib.Options;
-with Ada_Lib.Options_Interface;
+with Ada_Lib.Options.Actual;
 with Ada_Lib.Trace;
 
 --pragma Warnings (On, "GNOGA");
 -- needs to bin in ada_lib directory so gnoga can include it
 package AUnit.Ada_Lib.Options is
 
-   Failed                        : exception;
+   Failed                     : exception;
 
-   type AUnit_Options_Type       is limited new Standard.Ada_Lib.Options.
-                                    Nested_Options_Type with null record;
+   type AUnit_Options_Type    is limited new Standard.Ada_Lib.Options.Actual.
+                                 Nested_Options_Type with null record;
 
-   type AUnit_Options_Access           is access AUnit_Options_Type;
-   type AUnit_Options_Class_Access     is access all AUnit_Options_Type'class;
+   type AUnit_Options_Access  is access AUnit_Options_Type;
+   type AUnit_Options_Class_Access
+                              is access all AUnit_Options_Type'class;
    type AUnit_Options_Constant_Class_Access
-                                       is access constant AUnit_Options_Type'class;
+                              is access constant AUnit_Options_Type'class;
 
    overriding
    function Initialize (
@@ -30,10 +29,8 @@ package AUnit.Ada_Lib.Options is
    overriding
    function Process_Option (
       Options                    : in out AUnit_Options_Type;
-      Iterator                   : in out Standard.Ada_Lib.Command_Line_Iterator.
-                                             Abstract_Package.Abstract_Iterator_Type'class;
-      Option                     : in     Standard.Ada_Lib.Options_Interface.
-                                             Option_Type'class
+      Iterator                   : in out Standard.Ada_Lib.Options.Command_Line_Iterator_Interface'class;
+      Option                     : in     Standard.Ada_Lib.Options.Option_Type'class
    ) return Boolean;
 
 private
@@ -46,8 +43,8 @@ private
 
    overriding
    procedure Trace_Parse (
-      Options                    : in out AUnit_Options_Type;
-      Iterator                   : in out Standard.Ada_Lib.Command_Line_Iterator.
-                                             Abstract_Package.Abstract_Iterator_Type'class);
+      Options              : in out AUnit_Options_Type;
+      Iterator             : in out Standard.Ada_Lib.Options.
+                                       Command_Line_Iterator_Interface'class);
 
 end AUnit.Ada_Lib.Options;
