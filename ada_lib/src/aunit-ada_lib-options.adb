@@ -148,7 +148,8 @@ package body AUnit.Ada_Lib.Options is
    end Trace_Parse;
 
 begin
---AUnit.debug := True;
+AUnit.debug := True;
+debug := True;
 --Trace_Options := True;
    Log_Here (Elaborate);
 end AUnit.Ada_Lib.Options;
