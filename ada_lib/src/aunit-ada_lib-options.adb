@@ -1,6 +1,6 @@
 with Ada.Text_IO; use Ada.Text_IO;
 --with Ada_Lib.Options;
-with Ada_Lib.Options.Help;
+with Ada_Lib.Help;
 with Ada_Lib.Trace; use Ada_Lib.Trace;
 with Ada_Lib.Options.Runstring;
 --with Debug_Options;
@@ -91,7 +91,7 @@ package body AUnit.Ada_Lib.Options is
       case Help_Mode is
 
       when Standard.Ada_Lib.Options.Program =>
-            Standard.Ada_Lib.Options.Help.Add_Option (Trace_Option, "trace options",
+            Standard.Ada_Lib.Help.Add_Option (Trace_Option, "trace options",
                "AUnit library traces", "AUnit library");
 
       when Standard.Ada_Lib.Options.Traces =>
