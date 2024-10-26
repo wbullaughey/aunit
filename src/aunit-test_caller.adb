@@ -32,6 +32,8 @@
 with Ada.Unchecked_Conversion;
 with AUnit.Assertions;
 with AUnit.Memory.Utils;
+with Ada_Lib.Trace;
+
 
 package body AUnit.Test_Caller is
 
@@ -102,6 +104,7 @@ package body AUnit.Test_Caller is
 
    procedure Set_Up (Test : in out Test_Case) is
    begin
+ada_lib.trace.log_here;
       Set_Up (Test.Fixture.all);
    end Set_Up;
 
@@ -114,4 +117,8 @@ package body AUnit.Test_Caller is
       Tear_Down (Test.Fixture.all);
    end Tear_Down;
 
+begin
+--Debug := True;
+   Ada_Lib.Trace.Log_Here (Debug or Ada_Lib.Trace.Elaborate or
+      Ada_Lib.Trace.Trace_Options);
 end AUnit.Test_Caller;

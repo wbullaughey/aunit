@@ -15,7 +15,8 @@ package body AUnit.Ada_Lib.Options is
                                     Standard.Ada_Lib.Options.
                                        Options_Type :=
                                           Standard.Ada_Lib.Options.
-                                             Create_Options (Trace_Option);
+                                             Create_Options (Trace_Option,
+                                                Standard.Ada_Lib.Options.Unmodified);
    Options_Without_Parameters    : aliased constant
                                     Standard.Ada_Lib.Options.
                                        Options_Type := Standard.Ada_Lib.

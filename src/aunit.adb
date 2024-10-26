@@ -101,5 +101,6 @@ package body AUnit is
 
 begin
 --debug := True;
+--Trace_Options := True;
    Log_Here (Debug or Trace_Options or Elaborate);
 end AUnit;
