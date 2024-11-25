@@ -28,6 +28,7 @@
 -- GNAT is maintained by AdaCore (http://www.adacore.com)                   --
 --                                                                          --
 ------------------------------------------------------------------------------
+with Ada_Lib.Trace;
 
 package body AUnit.Test_Fixtures is
 
@@ -38,6 +39,7 @@ package body AUnit.Test_Fixtures is
    procedure Set_Up (Test : in out Test_Fixture) is
       pragma Unreferenced (Test);
    begin
+ada_lib.trace.log_here;
       null;
    end Set_Up;
 
@@ -51,4 +53,8 @@ package body AUnit.Test_Fixtures is
       null;
    end Tear_Down;
 
+begin
+--Debug := True;
+   Ada_Lib.Trace.Log_Here (Debug or Ada_Lib.Trace.Elaborate or
+      Ada_Lib.Trace.Trace_Options);
 end AUnit.Test_Fixtures;

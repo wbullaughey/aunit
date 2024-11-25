@@ -127,6 +127,7 @@ package body AUnit.Simple_Test_Cases is
                   Test_Case'class (Test.all).Routine_Name,
                   (Format ("exception:" & Ada.Exceptions.Exception_Name (Fault)),
                    Format ("message:" & Ada.Exceptions.Exception_Message (Fault)), 0));
+--             raise;
          end;
 
          if Setup_Completed then
