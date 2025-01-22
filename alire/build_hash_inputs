@@ -1,7 +1,7 @@
-dependency:ada_lib=2.0.0-dev=b12bb1464d3931d949b1dff50a63cbf279c5eb4b99459862843ec479e01ce6c0
-dependency:applications=0.1.0-dev=47e7873208f8b0fdfffd66d9dcc0f434827b44e651a49766d89884a5689f0abc
+dependency:ada_lib=2.0.0-dev=508b0f9d884a3525c143191e76684a9aba7d0c22d67856ea7dfae39c0453e9a3
+dependency:applications=0.1.0-dev=123b7e0511d7cba865e9552ea9394bdfc12bf8a8fbaaf9df45f0657529ce4110
 external:AUNIT_LIBRARY_TYPE=default
 external:LIBRARY_TYPE=default
 profile:aunit=RELEASE
 switches:aunit=-O3,-fdata-sections,-ffunction-sections,-gnatW8,-gnatn
-version:gnat_native=12.2.1
+version:gnat_arm_elf=12.2.1
