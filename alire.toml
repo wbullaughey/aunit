@@ -19,3 +19,15 @@ applications = "*"
 [[pins]]
 applications = { path = ".." }
 
+[[depends-on]]
+ada_lib_gnoga = "*"
+
+[[pins]]
+ada_lib_gnoga  = { path = "../gnoga = { path ="/Users/Wayne/GNAT/share/gpr" }/ada_lib_gnoga" }
+
+[[depends-on]]
+gnoga = "*"
+
+[[pins]]
+gnoga = { path ="/Users/Wayne/GNAT/share" }
+
