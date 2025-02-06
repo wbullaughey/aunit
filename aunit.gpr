@@ -1,5 +1,5 @@
 --with "ada_lib";
-with "applications.gpr";
+with "alr_environment.gpr";
 with "config/aunit_config.gpr";
 with "default_config";
 

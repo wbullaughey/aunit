@@ -81,16 +81,12 @@ package body AUnit.Test_Cases is
             " test tag " & Ada_Lib.Trace.Tag_Name (Test_Case'class (Test.all)'tag));
       Outcome := Success;
       Routine_Lists.Clear (Test.Routines);
-Ada_Lib.Trace.Log_here;
       Register_Tests (Test_Case'Class (Test.all));
-Ada_Lib.Trace.Log_here;
       Set_Up_Case (Test_Case'Class (Test.all));
-Ada_Lib.Trace.Log_here;
       C := First (Test.Routines);
 
       while Has_Element (C) loop
          Test.Routine := Element (C);
-Ada_Lib.Trace.Log_here;
          if Options.Filter = null
            or else Is_Active (Options.Filter.all, Test.all)
          then
@@ -104,11 +100,9 @@ Ada_Lib.Trace.Log_here;
             end if;
          end if;
 
-Ada_Lib.Trace.Log_here;
          Next (C);
       end loop;
 
-Ada_Lib.Trace.Log_here;
       Tear_Down_Case (Test_Case'Class (Test.all));
       Ada_Lib.Trace.Log_Out (Debug);
    end Run;
