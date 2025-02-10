@@ -2,6 +2,7 @@ not_used
 workspace
 db_daemon_gps*
 save
+alire/
 list-db_view.txt
 *.ali
 *.adbx
