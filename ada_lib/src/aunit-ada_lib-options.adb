@@ -16,7 +16,7 @@ package body AUnit.Ada_Lib.Options is
                                        Options_Type :=
                                           Standard.Ada_Lib.Options.
                                              Create_Options (Trace_Option,
-                                             Standard.Ada_Lib.Options.Unmodified);
+                                                Standard.Ada_Lib.Options.Unmodified);
    Options_Without_Parameters    : aliased constant
                                     Standard.Ada_Lib.Options.
                                        Options_Type := Standard.Ada_Lib.
@@ -31,14 +31,14 @@ package body AUnit.Ada_Lib.Options is
    ----------------------------------------------------------------------------
 
    begin
-      Log_In (Debug or Trace_Options, "from " & From);
+      Log_In (Debug_Options or Trace_Options, "from " & From);
       Standard.Ada_Lib.Options.Runstring.Options.Register (
          Standard.Ada_Lib.Options.Runstring.With_Parameters,
          Options_With_Parameters);
       Standard.Ada_Lib.Options.Runstring.Options.Register (
          Standard.Ada_Lib.Options.Runstring.Without_Parameters,
          Options_Without_Parameters);
-      Log_Out (Debug or Trace_Options);
+      Log_Out (Debug_Options or Trace_Options);
       return True;
    end Initialize;
 
@@ -55,7 +55,7 @@ package body AUnit.Ada_Lib.Options is
       use Standard.Ada_Lib.Options;
 
    begin
-      Log_In (Debug or Trace_Options, Option.Image);
+      Log_In (Debug_Options or Trace_Options, Option.Image);
       if Has_Option (Option,
             Options_With_Parameters, Options_Without_Parameters) then
          if Option.Kind = Plain then
@@ -65,18 +65,18 @@ package body AUnit.Ada_Lib.Options is
                   Options.Trace_Parse (Iterator);
 
                when Others =>
-                  return Log_Out (False, Debug or Trace_Options);
+                  return Log_Out (False, Debug_Options or Trace_Options);
 
             end case;
          else
-            return Log_Out (False, Debug or Trace_Options);
+            return Log_Out (False, Debug_Options or Trace_Options);
          end if;
       else
-         return Log_Out (False, Debug or Trace_Options);
+         return Log_Out (False, Debug_Options or Trace_Options);
             -- derived from Interface_Options_Type
       end if;
 
-      return Log_Out (True, Debug or Trace_Options,
+      return Log_Out (True, Debug_Options or Trace_Options,
          " " & Option.Image & " handled");
    end Process_Option;
 
@@ -88,7 +88,7 @@ package body AUnit.Ada_Lib.Options is
    ----------------------------------------------------------------------------
 
    begin
-      Log_In (Debug or Trace_Options);
+      Log_In (Debug_Options or Trace_Options);
       case Help_Mode is
 
       when Standard.Ada_Lib.Options.Program =>
@@ -105,7 +105,7 @@ package body AUnit.Ada_Lib.Options is
 
       end case;
 
-      Log_Out (Debug or Trace_Options);
+      Log_Out (Debug_Options or Trace_Options);
    end Program_Help;
 
    ----------------------------------------------------------------------------

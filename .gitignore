@@ -7,6 +7,7 @@ list-db_view.txt
 *.ali
 *.adbx
 *.adsx
+*.cswi
 aunit copy
 aunit.try1
 .DS_Store
@@ -21,3 +22,4 @@ aunit/tests/sent.txt
 GNAT*
 bin
 obj/
+alire/cache/*
