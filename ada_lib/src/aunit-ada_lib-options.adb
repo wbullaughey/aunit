@@ -25,7 +25,7 @@ package body AUnit.Ada_Lib.Options is
    ----------------------------------------------------------------------------
    overriding
    function Initialize (
-     Options                     : in out AUnit_Options_Type;
+     Options                     : in out Aunit_Program_Options_Type;
      From                        : in     String := Standard.Ada_Lib.Trace.Here
    ) return Boolean is
    ----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ package body AUnit.Ada_Lib.Options is
    ----------------------------------------------------------------------------
    overriding
    function Process_Option (
-      Options                    : in out AUnit_Options_Type;
+      Options                    : in out Aunit_Program_Options_Type;
       Iterator                   : in out Standard.Ada_Lib.Options.
                                              Command_Line_Iterator_Interface'class;
       Option                     : in     Standard.Ada_Lib.Options.Option_Type'class
@@ -83,7 +83,7 @@ package body AUnit.Ada_Lib.Options is
    ----------------------------------------------------------------------------
    overriding
    procedure Program_Help (
-      Options                    : in      AUnit_Options_Type;
+      Options                    : in      Aunit_Program_Options_Type;
       Help_Mode                  : in      Standard.Ada_Lib.Options.Help_Mode_Type) is
    ----------------------------------------------------------------------------
 
@@ -111,7 +111,7 @@ package body AUnit.Ada_Lib.Options is
    ----------------------------------------------------------------------------
    overriding
    procedure Trace_Parse (
-      Options                    : in out AUnit_Options_Type;
+      Options                    : in out Aunit_Program_Options_Type;
       Iterator                   : in out Standard.Ada_Lib.Options.Command_Line_Iterator_Interface'class) is
    ----------------------------------------------------------------------------
 
