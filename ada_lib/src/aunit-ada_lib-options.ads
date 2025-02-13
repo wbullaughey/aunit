@@ -28,7 +28,7 @@ package AUnit.Ada_Lib.Options is
 
    overriding
    function Process_Option (
-      Options                    : in out AUnit_Options_Type;
+      Options                     : in out AUnit_Options_Type;
       Iterator                   : in out Standard.Ada_Lib.Options.Command_Line_Iterator_Interface'class;
       Option                     : in     Standard.Ada_Lib.Options.Option_Type'class
    ) return Boolean;
