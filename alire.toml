@@ -13,9 +13,4 @@ ada_lib = "*"
 [[pins]]
 ada_lib = { path = "../ada_lib" }
 
-[[depends-on]]
-applications = "*"
-
-[[pins]]
-applications = { path = ".." }
 
