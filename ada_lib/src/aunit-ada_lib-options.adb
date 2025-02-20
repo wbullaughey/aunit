@@ -111,8 +111,9 @@ package body AUnit.Ada_Lib.Options is
    ----------------------------------------------------------------------------
    overriding
    procedure Trace_Parse (
-      Options                    : in out Aunit_Program_Options_Type;
-      Iterator                   : in out Standard.Ada_Lib.Options.Command_Line_Iterator_Interface'class) is
+      Options        : in out Aunit_Program_Options_Type;
+      Iterator       : in out Standard.Ada_Lib.Options.
+                                 Command_Line_Iterator_Interface'class) is
    ----------------------------------------------------------------------------
 
       Parameter                  : constant String := Iterator.Get_Parameter;
