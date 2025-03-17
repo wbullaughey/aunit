@@ -1,4 +1,4 @@
-with "base";
+--with "base";
 
 abstract project Local is
 
