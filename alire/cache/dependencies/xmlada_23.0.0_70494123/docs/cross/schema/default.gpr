@@ -1,4 +1,0 @@
-with "xmlada";
-project Default is
-   for Main use ("schemaexample.adb");
-end Default;

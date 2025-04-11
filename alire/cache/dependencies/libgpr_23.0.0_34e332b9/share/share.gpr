@@ -1,6 +1,0 @@
-project Share is
-
-   for Languages use ("XML");
-   for Source_Dirs use ("gprconfig"); 
-
-end Share;
