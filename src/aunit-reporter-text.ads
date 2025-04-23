@@ -41,6 +41,7 @@ package AUnit.Reporter.Text is
    --  terminal.
    --  By default, no color is used.
 
+   overriding
    procedure Report (Engine  : Text_Reporter;
                      R       : in out Result'Class;
                      Options : AUnit_Options := Default_Options);

@@ -54,6 +54,7 @@ package body AUnit.Test_Cases is
    -- Run_Test --
    --------------
 
+   overriding
    procedure Run_Test (Test : in out Test_Case) is
    begin
       Log_In (Debug);
@@ -65,6 +66,7 @@ package body AUnit.Test_Cases is
    -- Run --
    ---------
 
+   overriding
    procedure Run
      (Test    : access Test_Case;
       Options :        AUnit.Options.AUnit_Options;
@@ -111,6 +113,7 @@ package body AUnit.Test_Cases is
    -- Routine_Name --
    ------------------
 
+   overriding
    function Routine_Name (Test : Test_Case) return Message_String is
    begin
       Log_Here (Debug, (if Test.Routine.Routine_Name = Null then

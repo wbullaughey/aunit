@@ -80,6 +80,7 @@ package body AUnit.Test_Caller is
    -- Name --
    ----------
 
+   overriding
    function Name (Test : Test_Case) return Message_String is
    begin
       return Test.Name;
@@ -89,6 +90,7 @@ package body AUnit.Test_Caller is
    -- Run_Test --
    --------------
 
+   overriding
    procedure Run_Test (Test : in out Test_Case) is
    begin
       --  Before running the fixture's method, we need to make sure that
@@ -102,6 +104,7 @@ package body AUnit.Test_Caller is
    -- Set_Up --
    ------------
 
+   overriding
    procedure Set_Up (Test : in out Test_Case) is
    begin
 ada_lib.trace.log_here;
@@ -112,6 +115,7 @@ ada_lib.trace.log_here;
    -- Tear_Down --
    ---------------
 
+   overriding
    procedure Tear_Down (Test : in out Test_Case) is
    begin
       Tear_Down (Test.Fixture.all);
