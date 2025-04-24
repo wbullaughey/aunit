@@ -95,15 +95,19 @@ package AUnit.Test_Caller is
    --  Initialize a test case from a test fixture method, reporting the result
    --  of the test using the Name parameter.
 
+   overriding
    function Name (Test : Test_Case) return Message_String;
    --  Test case name
 
+   overriding
    procedure Run_Test (Test : in out Test_Case);
    --  Perform the test.
 
+   overriding
    procedure Set_Up (Test : in out Test_Case);
    --  Set up performed before each test case
 
+   overriding
    procedure Tear_Down (Test : in out Test_Case);
    --  Tear down performed after each test case
 

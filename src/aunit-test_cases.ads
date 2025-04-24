@@ -89,6 +89,7 @@ package AUnit.Test_Cases is
       --  Add test routine for a specific test case
    end Specific_Test_Case_Registration;
 
+   overriding
    procedure Run
      (Test    : access Test_Case;
       Options :        AUnit.Options.AUnit_Options;
@@ -96,9 +97,11 @@ package AUnit.Test_Cases is
       Outcome :    out Status);
    --  Run test case. Do not override.
 
+   overriding
    procedure Run_Test (Test : in out Test_Case);
    --  Perform the current test procedure. Do not override.
 
+   overriding
    function Routine_Name (Test : Test_Case) return Message_String;
    --  Routine name. Returns the routine under test. Do not override.
 
