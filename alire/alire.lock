@@ -1,4 +1,4 @@
-# THIS IS A MACHINE-GENERATED FILE. DO NOT EDIT MANUALLY.
+# THIS FILE IS GENERATED. DO NOT EDIT.
 
 [solution]
 [solution.context]
@@ -8,12 +8,12 @@ crate = "ada_lib"
 fulfilment = "linked"
 pinned = false
 transitivity = "direct"
-versions = "*"
+versions = "~0.1.0-dev"
 [solution.state.link]
 lockfiled = true
 path = "../ada_lib"
 [[solution.state]]
-crate = "applications"
+crate = "alr_environment"
 fulfilment = "linked"
 pinned = false
 transitivity = "direct"
@@ -25,9 +25,8 @@ path = ".."
 crate = "gnat"
 fulfilment = "solved"
 pinned = false
-shared = true
 transitivity = "indirect"
-versions = "(/=2020) & (>=11)"
+versions = "((>=14) & (/=2020)) & (>=11)"
 [solution.state.release]
 auto-gpr-with = false
 description = "The GNAT Ada compiler - Native"
@@ -40,9 +39,9 @@ maintainers-logins = [
 ]
 name = "gnat_native"
 provides = [
-"gnat=12.2.1",
+"gnat=14.2.1",
 ]
-version = "12.2.1"
+version = "14.2.1"
 [solution.state.release.configuration]
 auto_gpr_with = true
 disabled = true
@@ -51,92 +50,35 @@ generate_c = true
 generate_gpr = true
 output_dir = "config"
 [solution.state.release.environment]
+[solution.state.release.environment.LD_LIBRARY_PATH]
+prepend = "${CRATE_ROOT}/lib"
+[solution.state.release.environment.LD_RUN_PATH]
+prepend = "${CRATE_ROOT}/lib"
+[solution.state.release.environment.LIBRARY_PATH]
+prepend = "${CRATE_ROOT}/lib"
 [solution.state.release.environment.PATH]
 prepend = "${CRATE_ROOT}/bin"
 [solution.state.release.origin]
 binary = true
 hashes = [
-"sha256:77267eb19842059c10f6eaf417b75d0483c0f977fb2a2cba0fb1d785fc5bfb78",
+"sha256:cc5517d65c2074807c8ae97b671e852ed70e307a457e7acde0a848a9394e31c5",
 ]
-url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-12.2.0-1/gnat-x86_64-darwin-12.2.0-1.tar.gz"
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-aarch64-darwin-14.2.0-1.tar.gz"
 [[solution.state]]
 crate = "gnatcoll"
-fulfilment = "solved"
+fulfilment = "linked"
 pinned = false
-shared = false
-transitivity = "indirect"
-versions = "*"
-[solution.state.release]
-authors = [
-"AdaCore",
-]
-description = "GNAT Components Collection - Core packages"
-licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
-maintainers = [
-"chouteau@adacore.com",
-]
-maintainers-logins = [
-"Fabien-Chouteau",
-]
-name = "gnatcoll"
-project-files = [
-"gnatcoll.gpr",
-]
-tags = [
-"gnatcoll",
-"json",
-"email",
-"refcount",
-"projects",
-"gpr",
-"vfs",
-]
-version = "23.0.0"
-website = "https://github.com/adacore/gnatcoll-core"
-[solution.state.release.configuration]
-auto_gpr_with = true
-disabled = true
-generate_ada = true
-generate_c = true
-generate_gpr = true
-output_dir = "config"
-[solution.state.release.gpr-externals]
-GNATCOLL_ATOMICS = [
-"intrinsic",
-"mutex",
-]
-GNATCOLL_BUILD_MODE = [
-"DEBUG",
-"PROD",
-]
-GNATCOLL_OS = [
-"windows",
-"unix",
-"osx",
-]
-LIBRARY_TYPE = [
-"static",
-"relocatable",
-"static-pic",
-]
-[solution.state.release.gpr-set-externals]
-GNATCOLL_BUILD_MODE = "PROD"
-GNATCOLL_OS = "osx"
-GNATCOLL_VERSION = "23.0.0"
-[solution.state.release.origin]
-hashes = [
-"sha512:29478a20d96b83f7f1ded15c5e5129b00566ca1725550697cdd95366c21d8e50a8f296850b2adf68c3a7a339ffa4ac9c9a58e76058f3210d9b91e0bd138ae9bc",
-]
-url = "https://github.com/AdaCore/gnatcoll-core/archive/v23.0.0/gnatcoll-core-23.0.0.zip"
-[[solution.state.release.depends-on]]
-libgpr = "~23.0.0"
+transitivity = "direct"
+versions = "^26.0.0"
+[solution.state.link]
+lockfiled = true
+path = "../../../../../GNAT/gnatcoll-core"
 [[solution.state]]
 crate = "libgpr"
 fulfilment = "solved"
 pinned = false
-shared = false
 transitivity = "indirect"
-versions = "~23.0.0"
+versions = ">=25.0.0"
 [solution.state.release]
 authors = [
 "AdaCore",
@@ -153,7 +95,7 @@ name = "libgpr"
 project-files = [
 "gpr/gpr.gpr",
 ]
-version = "23.0.0"
+version = "25.0.0"
 [solution.state.release.configuration]
 auto_gpr_with = true
 disabled = true
@@ -175,19 +117,18 @@ LIBRARY_TYPE = [
 ]
 [solution.state.release.origin]
 hashes = [
-"sha512:34e332b981e907c59a4a354624a3048815c73daf662146aac3db7f1dc983990360a99a04df82d9e3b23d5ba8521f76eb7adb6284cac4ad3f959a896a8a5a8fad",
+"sha512:17669998ac9a420a44713704d0155dcdfa0998896c43723990268035417e7faeec77217caff108a757eb62bea4c98ee6a25781311743b4f3bfbda9ca48633ffe",
 ]
-url = "https://github.com/AdaCore/gprbuild/archive/v23.0.0/gprbuild-23.0.0.zip"
+url = "https://github.com/adacore/gprbuild/archive/v25.0.0/gprbuild-25.0.0.zip"
 [[solution.state.release.depends-on]]
 gnat = "/=2020"
-xmlada = "~23.0.0"
+xmlada = "~25.0.0"
 [[solution.state]]
 crate = "xmlada"
 fulfilment = "solved"
 pinned = false
-shared = false
 transitivity = "indirect"
-versions = "~23.0.0"
+versions = "~25.0.0"
 [solution.state.release]
 authors = [
 "AdaCore",
@@ -209,7 +150,7 @@ project-files = [
 "schema/xmlada_schema.gpr",
 "unicode/xmlada_unicode.gpr",
 ]
-version = "23.0.0"
+version = "25.0.0"
 website = "https://github.com/AdaCore/xmlada"
 [solution.state.release.configuration]
 auto_gpr_with = true
@@ -234,9 +175,9 @@ XMLADA_BUILD_MODE = [
 ]
 [solution.state.release.origin]
 hashes = [
-"sha512:70494123705a6e6006050146444b2f96e2274f01b59f6d2810d3e2e13a46a83a4a13721725a9ba85d24a3950df079e7f4fa2d8acc5ce5a2867ab3ae2b9fd5cc8",
+"sha512:7f12fe3af650530590c8199b8900ef903f647b0421603cfee8141ab57321c23b8e5dd1e1f3205476fdac874aaf5666511d822d24f64f263d492966aa1df19f82",
 ]
-url = "https://github.com/AdaCore/xmlada/archive/v23.0.0/xmlada-23.0.0.zip"
+url = "https://github.com/adacore/xmlada/archive/v25.0.0/xmlada-25.0.0.zip"
 [[solution.state.release.actions]]
 command = [
 "sh",

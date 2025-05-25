@@ -1,14 +1,22 @@
 name = "aunit"
-description = "aunit tests"
+description = ""
 version = "0.1.0-dev"
-project-files = ["aunit.gpr"]
 
-authors = ["Wayne Bullaughey"]
-maintainers = ["Wayne Bullaughey <wlb122@verizon.net>"]
-maintainers-logins = ["wbullaughey"]
+authors = ["Your Name"]
+maintainers = ["Your Name <example@example.com>"]
+maintainers-logins = ["github-username"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = []
 
 [[depends-on]]
-ada_lib = "*"
+alr_environment = "*"
 
 [[pins]]
-ada_lib = { path = "../ada_lib" }
+alr_environment = { path='..' }
+
+[[depends-on]]
+ada_lib = "~0.1.0-dev"
+
+[[pins]]
+ada_lib = { path='../ada_lib' }
