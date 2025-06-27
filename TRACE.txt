@@ -1,0 +1,8 @@
+output TRACE TRACE DO_TRACE TRUE APPEND TRACE        PARAMETERS SCRIPT_DIR ..
+output TRACE TRACE DO_TRACE TRUE APPEND TRACE -a       PARAMETERS global build WHICH library DIRECTORY /Users/wayne/Project/git/alr/alr_environment/aunit SCRIPT_DIR .. KIND DO_TRACE TRUE
+output TRACE LIST DO_TRACE TRUE APPEND TRACE -a       PARAMETERS missing or bad KIND
+output TRACE TRACE DO_TRACE TRUE APPEND TRACE        PARAMETERS SCRIPT_DIR ..
+output TRACE TRACE DO_TRACE TRUE APPEND TRACE -a       PARAMETERS global build WHICH execute DIRECTORY /Users/wayne/Project/git/alr/alr_environment/aunit SCRIPT_DIR .. KIND library DO_TRACE TRUE
+output TRACE TRACE DO_TRACE TRUE APPEND TRACE -a       PARAMETERS building /Users/wayne/Project/git/alr/alr_environment/aunit mode execute kind library
+output TRACE TRACE DO_TRACE TRUE APPEND TRACE        PARAMETERS SCRIPT_DIR ..
+output TRACE TRACE DO_TRACE TRUE APPEND TRACE -a       PARAMETERS global build WHICH all DIRECTORY /Users/wayne/Project/git/alr/alr_environment/aunit SCRIPT_DIR .. KIND library DO_TRACE TRUE
