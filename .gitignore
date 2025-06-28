@@ -3,6 +3,9 @@ workspace
 db_daemon_gps*
 save
 alire/
+config/
+alire.toml
+TRACE.txt
 list-db_view.txt
 *.ali
 *.adbx
