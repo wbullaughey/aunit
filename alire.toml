@@ -21,11 +21,6 @@ ada_lib = "~0.1.0-dev"
 [[pins]]
 ada_lib = { path='../ada_lib' }
 
-[[depends-on]]
-gnatcoll = "^26.0.0"
-
-[[pins]]
-gnatcoll = { path='../vendor/github.com/gnatcoll-core' }
 
 
 
