@@ -117,8 +117,13 @@ ada_lib.trace.log_here;
 
    overriding
    procedure Tear_Down (Test : in out Test_Case) is
+
+      use Ada_Lib.Trace;
+
    begin
+      Log_In (Debug or Trace_Set_Up);
       Tear_Down (Test.Fixture.all);
+      Log_Out (Debug or Trace_Set_Up);
    end Tear_Down;
 
 begin

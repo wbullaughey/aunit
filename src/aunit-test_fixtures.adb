@@ -39,8 +39,7 @@ package body AUnit.Test_Fixtures is
    procedure Set_Up (Test : in out Test_Fixture) is
       pragma Unreferenced (Test);
    begin
-ada_lib.trace.log_here;
-      null;
+      ada_lib.trace.log_here;
    end Set_Up;
 
    ---------------
@@ -50,7 +49,7 @@ ada_lib.trace.log_here;
    procedure Tear_Down (Test : in out Test_Fixture) is
       pragma Unreferenced (Test);
    begin
-      null;
+      ada_lib.trace.log_here;
    end Tear_Down;
 
 begin
