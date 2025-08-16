@@ -100,7 +100,7 @@ package body AUnit is
    end Format;
 
 begin
-debug := True;
+--Debug := True;
 --Trace_Options := True;
    Log_Here (Debug or Trace_Options or Elaborate);
 end AUnit;
