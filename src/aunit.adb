@@ -36,7 +36,7 @@ with System.Storage_Elements;  use System.Storage_Elements;
 
 package body AUnit is
 
-   use type System.Storage_Elements.Storage_Offset;
+-- use type System.Storage_Elements.Storage_Offset;
 
    type Bounds is record
       First : Natural;
