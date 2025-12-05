@@ -34,7 +34,7 @@ with Ada.Text_IO;
 with AUnit.Assertions;   use AUnit.Assertions;
 with AUnit.Options;      use AUnit.Options;
 with AUnit.Test_Filters; use AUnit.Test_Filters;
-with Ada_Lib.trace;use Ada_Lib.trace;
+with Ada_Lib.Trace;use Ada_Lib.Trace;
 package body AUnit.Simple_Test_Cases is
 
    procedure Run_Routine

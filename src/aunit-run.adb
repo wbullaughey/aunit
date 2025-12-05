@@ -31,7 +31,7 @@
 
 with AUnit.Time_Measure;
 with AUnit.Test_Suites; use AUnit.Test_Suites;
-with Ada_Lib.trace; use Ada_Lib.trace;
+with Ada_Lib.Trace; use Ada_Lib.Trace;
 
 package body AUnit.Run is
 

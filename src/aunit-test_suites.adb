@@ -31,7 +31,7 @@
 
 with Ada.Unchecked_Conversion;
 with AUnit.Memory.Utils;
-with Ada_Lib.trace;use Ada_Lib.trace;
+with Ada_Lib.Trace;use Ada_Lib.Trace;
 
 package body AUnit.Test_Suites is
 

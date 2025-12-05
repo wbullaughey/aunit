@@ -107,7 +107,7 @@ package body AUnit.Test_Caller is
    overriding
    procedure Set_Up (Test : in out Test_Case) is
    begin
-ada_lib.trace.log_here;
+Ada_Lib.Trace.log_here;
       Set_Up (Test.Fixture.all);
    end Set_Up;
 
