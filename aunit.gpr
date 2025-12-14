@@ -1,4 +1,5 @@
 with "ada_lib_base.gpr";
+with "ada_lib_options";
 with "alr_environment.gpr";
 
 project Aunit is

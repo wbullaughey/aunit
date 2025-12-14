@@ -19,6 +19,12 @@ alr_environment = "*"
 alr_environment = { path='..' }
 
 [[depends-on]]
+ada_lib_options = "~0.1.0-dev"
+
+[[pins]]
+ada_lib_options = { path='../ada_lib/ada_lib_options' }
+
+[[depends-on]]
 ada_lib_base = "~0.1.0-dev"
 
 [[pins]]
