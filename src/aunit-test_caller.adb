@@ -121,9 +121,9 @@ Ada_Lib.Trace.log_here;
       use Ada_Lib.Trace;
 
    begin
-      Log_In (Debug or Trace_Set_Up);
+      Log_In (Debug or Trace_Set_Up_Tear_Down);
       Tear_Down (Test.Fixture.all);
-      Log_Out (Debug or Trace_Set_Up);
+      Log_Out (Debug or Trace_Set_Up_Tear_Down);
    end Tear_Down;
 
 begin

@@ -32,6 +32,8 @@
 with Ada.Unchecked_Conversion;
 with AUnit.Options;              use AUnit.Options;
 with AUnit.Test_Filters;         use AUnit.Test_Filters;
+with Ada_Lib.Strings;
+with Ada_Lib.String_Quote; use Ada_Lib.String_Quote;
 with Ada_Lib.Trace;use Ada_Lib.Trace;
 
 package body AUnit.Test_Cases is
@@ -77,9 +79,9 @@ package body AUnit.Test_Cases is
       Result : Status;
       C      : Cursor;
    begin
-      Ada_Lib.Trace.Log_In (Debug, "run options " & Image (Options'address) &
+      Ada_Lib.Trace.Log_In (Debug, "run options " & Ada_Lib.Strings.Image (Options'address) &
          (if Options.Filter = null then " no filter" else " have filter " &
-            Image (Options.Filter.all'address)) &
+            Ada_Lib.Strings.Image (Options.Filter.all'address)) &
             " test tag " & Ada_Lib.Trace.Tag_Name (Test_Case'class (Test.all)'tag));
       Outcome := Success;
       Routine_Lists.Clear (Test.Routines);

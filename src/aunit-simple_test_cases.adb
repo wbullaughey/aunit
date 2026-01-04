@@ -34,6 +34,7 @@ with Ada.Text_IO;
 with AUnit.Assertions;   use AUnit.Assertions;
 with AUnit.Options;      use AUnit.Options;
 with AUnit.Test_Filters; use AUnit.Test_Filters;
+with Ada_Lib.String_Quote; use Ada_Lib.String_Quote;
 with Ada_Lib.Trace;use Ada_Lib.Trace;
 package body AUnit.Simple_Test_Cases is
 
@@ -72,7 +73,7 @@ package body AUnit.Simple_Test_Cases is
    procedure Set_Up (Test : in out Test_Case) is
       pragma Unreferenced (Test);
    begin
-      Log_Here (Debug or Trace_Set_Up);
+      Log_Here (Debug or Trace_Set_Up_Tear_Down);
    end Set_Up;
 
    ---------------
@@ -82,7 +83,7 @@ package body AUnit.Simple_Test_Cases is
    procedure Tear_Down (Test : in out Test_Case) is
       pragma Unreferenced (Test);
    begin
-      Log_Here (Debug or Trace_Set_Up);
+      Log_Here (Debug or Trace_Set_Up_Tear_Down);
    end Tear_Down;
 
    ---------

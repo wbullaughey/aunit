@@ -29,6 +29,8 @@
 ------------------------------------------------------------------------------
 
 with AUnit.Simple_Test_Cases;  use AUnit.Simple_Test_Cases;
+with Ada_Lib.String_Quote; use Ada_Lib.String_Quote;
+with Ada_Lib.Strings;
 with Ada_Lib.Trace; use Ada_Lib.Trace;
 
 package body AUnit.Test_Filters is
@@ -69,10 +71,10 @@ package body AUnit.Test_Filters is
      (Filter : Name_Filter;
       T      : AUnit.Tests.Test'Class) return Boolean is
    begin
-      Log_In (Debug, "Filter " & Image (Filter'address) &
+      Log_In (Debug, "Filter " & Ada_Lib.Strings.Image (Filter'address) &
          (if Filter.Name = Null then " no filter name "
          else " filter name '" &Filter.Name.all & "' ") &
-         "tag " &tag_name (T'tag) & " test address " & Image_Pointer (T'address));
+         "tag " &tag_name (T'tag) & " test address " & Ada_Lib.Strings.Image_Pointer (T'address));
 
       if Filter.Name = null
         or else Filter.Name.all = ""

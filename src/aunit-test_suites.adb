@@ -31,6 +31,8 @@
 
 with Ada.Unchecked_Conversion;
 with AUnit.Memory.Utils;
+with Ada_Lib.Strings;
+with Ada_Lib.String_Quote; use Ada_Lib.String_Quote;
 with Ada_Lib.Trace;use Ada_Lib.Trace;
 
 package body AUnit.Test_Suites is
@@ -86,7 +88,7 @@ package body AUnit.Test_Suites is
       Result : Status := Success;
 
    begin
-      Log_In (Debug, "AUnit_Options " & Image (Options'address));
+      Log_In (Debug, "AUnit_Options " & Ada_Lib.Strings.Image (Options'address));
       Outcome := Success;
       while Has_Element (C) loop
          Log_Here (Debug, "Element find " & Element (C).Kind'img);
