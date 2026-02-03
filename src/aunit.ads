@@ -30,7 +30,6 @@
 ------------------------------------------------------------------------------
 
 --  Test Suite Framework
-
 package AUnit is
 
    type Message_String is access String;
@@ -45,5 +44,5 @@ package AUnit is
    function Message_Alloc (Length : Natural) return Message_String;
    procedure Message_Free (Msg : in out Message_String);
 
-   Debug                         : aliased Boolean := False;
+   Debug    : Boolean := False;
 end AUnit;

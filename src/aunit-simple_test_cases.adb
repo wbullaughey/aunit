@@ -147,5 +147,5 @@ package body AUnit.Simple_Test_Cases is
 
 begin
 --Debug := True;
-   Log_Here (Elaborate or Trace_Options);
+   Log_Here (Debug or Elaborate or Trace_Options);
 end AUnit.Simple_Test_Cases;
