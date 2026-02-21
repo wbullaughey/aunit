@@ -38,6 +38,8 @@ with Ada_Lib.String_Quote; use Ada_Lib.String_Quote;
 with Ada_Lib.Trace;use Ada_Lib.Trace;
 package body AUnit.Simple_Test_Cases is
 
+   use type Standard.Wide_Wide_String;
+
    procedure Run_Routine
      (Test    : access Test_Case'Class;
       Options :        AUnit_Options;
@@ -109,8 +111,9 @@ package body AUnit.Simple_Test_Cases is
       if Options.Filter = null
         or else Is_Active (Options.Filter.all, Test.all)
       then
-         Ada.Text_IO.Put_Line (Quote ("running suite", Test_Case'class (Test.all).Name) &
-            Quote (" routine", Test_Case'class (Test.all).Routine_Name));
+         Ada.Text_IO.Put_Line ("running suite, routine " &
+            Test_Case'class (Test.all).Name.all & " " &
+            Test_Case'class (Test.all).Routine_Name.all);
          Log_Here (Debug);
          AUnit.Assertions.Set_Current_Test (Test_Access (Test));
          Init_Test (Test.all);
