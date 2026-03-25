@@ -82,7 +82,7 @@ package body AUnit.Test_Cases is
       Ada_Lib.Trace.Log_In (Debug, "run options " & Ada_Lib.Strings.Image (Options'address) &
          (if Options.Filter = null then " no filter" else " have filter " &
             Ada_Lib.Strings.Image (Options.Filter.all'address)) &
-            " test tag " & Ada_Lib.Trace.Tag_Name (Test_Case'class (Test.all)'tag));
+            Ada_Lib.Trace.Tag_Name (" test", Test_Case'class (Test.all)'tag));
       Outcome := Success;
       Routine_Lists.Clear (Test.Routines);
       Register_Tests (Test_Case'Class (Test.all));

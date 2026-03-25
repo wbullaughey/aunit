@@ -74,7 +74,7 @@ package body AUnit.Test_Filters is
       Log_In (Debug, "Filter " & Ada_Lib.Strings.Image (Filter'address) &
          (if Filter.Name = Null then " no filter name "
          else " filter name '" &Filter.Name.all & "' ") &
-         "tag " &tag_name (T'tag) & " test address " & Ada_Lib.Strings.Image_Pointer (T'address));
+         Tag_Name (" T", T'tag) & " test address " & Ada_Lib.Strings.Image_Pointer (T'address));
 
       if Filter.Name = null
         or else Filter.Name.all = ""

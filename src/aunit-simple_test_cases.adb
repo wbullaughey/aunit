@@ -38,7 +38,7 @@ with Ada_Lib.String_Quote; use Ada_Lib.String_Quote;
 with Ada_Lib.Trace;use Ada_Lib.Trace;
 package body AUnit.Simple_Test_Cases is
 
-   use type Standard.Wide_Wide_String;
+-- use type Standard.Wide_Wide_String;
 
    procedure Run_Routine
      (Test    : access Test_Case'Class;
@@ -103,7 +103,7 @@ package body AUnit.Simple_Test_Cases is
    begin
       Log_In (Debug, Quote (" suite", Test_Case'class (Test.all).Name) &
          Quote (" routine", Test_Case'class (Test.all).Routine_Name));
---     " tag " &tag_name (Test_Case'class(Test.all)'tag) &
+--     Tag_Name (" ", Test_Case'class(Test.all)'tag) &
 --       " test address " & Image_Pointer (Test.all'address));
       Log_Here (Debug, Quote ("check running suite", Test_Case'class (Test.all).Name) &
          Quote (" routine", Test_Case'class (Test.all).Routine_Name));
