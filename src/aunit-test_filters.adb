@@ -79,7 +79,7 @@ package body AUnit.Test_Filters is
       if Filter.Name = null
         or else Filter.Name.all = ""
       then
-         Log_Out (Debug, " no fiter its active");
+         Log_Out (Debug, "fiter nul or no name, its active");
          return True;
       end if;
 

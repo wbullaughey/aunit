@@ -102,48 +102,53 @@ package body AUnit.Simple_Test_Cases is
       Setup_Completed : Boolean := True;
    begin
       Log_In (Debug, Quote (" suite", Test_Case'class (Test.all).Name) &
-         Quote (" routine", Test_Case'class (Test.all).Routine_Name));
---     Tag_Name (" ", Test_Case'class(Test.all)'tag) &
+         Quote (" routine", Test_Case'class (Test.all).Routine_Name) &
+         Tag_Name (" ", Test_Case'class(Test.all)'tag));
 --       " test address " & Image_Pointer (Test.all'address));
       Log_Here (Debug, Quote ("check running suite", Test_Case'class (Test.all).Name) &
-         Quote (" routine", Test_Case'class (Test.all).Routine_Name));
+         Quote (" routine", Test_Case'class (Test.all).Routine_Name) &
+         (if Options.Filter = null then
+            " filter is null"
+         else
+            ""));
       Outcome := Success;
-      if Options.Filter = null
-        or else Is_Active (Options.Filter.all, Test.all)
-      then
-         Ada.Text_IO.Put_Line ("running suite, routine " &
-            Test_Case'class (Test.all).Name.all & " " &
-            Test_Case'class (Test.all).Routine_Name.all);
-         Log_Here (Debug);
-         AUnit.Assertions.Set_Current_Test (Test_Access (Test));
-         Init_Test (Test.all);
-         Start_Test (R, 1);
+tag_history (true,"filter tag", Options.Filter.all'tag);
+         if Options.Filter = null
+           or else Is_Active (Options.Filter.all, Test.all)
+         then
+            Ada.Text_IO.Put_Line ("running suite, routine " &
+               Test_Case'class (Test.all).Name.all & " " &
+               Test_Case'class (Test.all).Routine_Name.all);
+            Log_Here (Debug);
+            AUnit.Assertions.Set_Current_Test (Test_Access (Test));
+            Init_Test (Test.all);
+            Start_Test (R, 1);
 
-         --  Run test routine
-         begin
-            Log_Here (Debug);
-            Set_Up (Test_Case'Class (Test.all));
-         exception
-            when Fault: others =>
-               Setup_Completed := False;
-               Trace_Exception (Fault);
-               AUnit.Assertions.Record_Assertion (R, Test_Case'class (Test.all).Name,
-                  Test_Case'class (Test.all).Routine_Name,
-                  (Format ("exception:" & Ada.Exceptions.Exception_Name (Fault)),
-                   Format ("message:" & Ada.Exceptions.Exception_Message (Fault)), 0));
---             raise;
-         end;
+            --  Run test routine
+            begin
+               Log_Here (Debug);
+               Set_Up (Test_Case'Class (Test.all));
+            exception
+               when Fault: others =>
+                  Setup_Completed := False;
+                  Trace_Exception (Fault);
+                  AUnit.Assertions.Record_Assertion (R, Test_Case'class (Test.all).Name,
+                     Test_Case'class (Test.all).Routine_Name,
+                     (Format ("exception:" & Ada.Exceptions.Exception_Name (Fault)),
+                      Format ("message:" & Ada.Exceptions.Exception_Message (Fault)), 0));
+   --             raise;
+            end;
 
-         if Setup_Completed then
+            if Setup_Completed then
+               Log_Here (Debug);
+               Run_Routine (Test, Options, R, Outcome);
+               Log_Here (Debug);
+            end if;
             Log_Here (Debug);
-            Run_Routine (Test, Options, R, Outcome);
+            Tear_Down (Test_Case'Class (Test.all));
+            AUnit.Assertions.Set_Current_Test (Old);
+         else
             Log_Here (Debug);
-         end if;
-         Log_Here (Debug);
-         Tear_Down (Test_Case'Class (Test.all));
-         AUnit.Assertions.Set_Current_Test (Old);
-      else
-         Log_Here (Debug);
       end if;
       Log_Out (Debug, " outcome " & Outcome'img);
    end Run;
