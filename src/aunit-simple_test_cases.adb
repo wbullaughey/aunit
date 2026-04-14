@@ -112,7 +112,6 @@ package body AUnit.Simple_Test_Cases is
          else
             ""));
       Outcome := Success;
-tag_history (true,"filter tag", Options.Filter.all'tag);
          if Options.Filter = null
            or else Is_Active (Options.Filter.all, Test.all)
          then

@@ -130,6 +130,6 @@ package body AUnit.Test_Suites is
    end New_Suite;
 
 begin
-Debug := True;
+--Debug := True;
    Log_Here (Debug);
 end AUnit.Test_Suites;

@@ -124,6 +124,6 @@ package body AUnit.Run is
    end Test_Runner_With_Results;
 
 begin
-debug := true;
+--debug := true;
    Log_Here (Debug);
 end AUnit.Run;
