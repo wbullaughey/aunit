@@ -169,7 +169,7 @@ package body AUnit.Test_Cases is
    end Specific_Test_Case_Registration;
 
 begin
-Debug := True;
+--Debug := True;
 --Trace_Options := True;
    Log_Here (Debug or Elaborate or Trace_Options);
 end AUnit.Test_Cases;

@@ -150,6 +150,13 @@ package body AUnit.Simple_Test_Cases is
             Log_Here (Debug);
       end if;
       Log_Out (Debug, " outcome " & Outcome'img);
+
+   exception
+
+      when Fault: others =>
+         Trace_Exception (Debug, Fault);
+         raise;
+
    end Run;
 
 begin
