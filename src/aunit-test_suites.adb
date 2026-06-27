@@ -88,15 +88,18 @@ package body AUnit.Test_Suites is
       Result : Status := Success;
 
    begin
-      Log_In (Debug, "AUnit_Options " & Ada_Lib.Strings.Image (Options'address));
+      Log_In (Debug, "AUnit_Options " & Ada_Lib.Strings.Image (Options'address) &
+         Tag_Name (" Suite", Test_Suite'class (Suite.all)'tag));
       Outcome := Success;
       while Has_Element (C) loop
          Log_Here (Debug, "Element find " & Element (C).Kind'img);
 
          case Element (C).Kind is
             when TC_Elt =>
+               Log_Here (Debug);
                AUnit.Simple_Test_Cases.Run (Element (C).TC, Options, R, Result);
             when TS_Elt =>
+               Log_Here (Debug);
                Run (Element (C).TS, Options, R, Result);
          end case;
 
@@ -105,6 +108,7 @@ package body AUnit.Test_Suites is
             Outcome := Failure;
          end if;
 
+         Log_Here (Debug);
          Next (C);
       end loop;
       Log_Out (Debug);
