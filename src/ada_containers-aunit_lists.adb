@@ -32,6 +32,7 @@
 
 with System;  use type System.Address;
 
+with Ada_Lib.Trace;
 with AUnit.Memory;       use AUnit.Memory;
 with AUnit.Memory.Utils; use AUnit.Memory.Utils;
 

@@ -108,10 +108,10 @@ package body AUnit.Test_Suites is
             Outcome := Failure;
          end if;
 
-         Log_Here (Debug);
+         Log_Here (Debug, "Outcome " & Outcome'img & " result " & Result'img);
          Next (C);
       end loop;
-      Log_Out (Debug);
+      Log_Out (Debug, "Outcome " & Outcome'img);
    end Run;
 
    ---------------
