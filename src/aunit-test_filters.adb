@@ -71,6 +71,7 @@ package body AUnit.Test_Filters is
      (Filter : Name_Filter;
       T      : AUnit.Tests.Test'Class) return Boolean is
    begin
+log_here ("debug " & debug'img);
       Log_In (Debug, "Filter " & Ada_Lib.Strings.Image (Filter'address) &
          (if Filter.Name = Null then " no filter name "
          else " filter name '" &Filter.Name.all & "' ") &
