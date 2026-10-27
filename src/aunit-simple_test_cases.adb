@@ -101,12 +101,12 @@ package body AUnit.Simple_Test_Cases is
       Old : constant Test_Access := AUnit.Assertions.Current_Test;
       Setup_Completed : Boolean := True;
    begin
-      Log_In (Debug, Quote (" suite", Test_Case'class (Test.all).Name) &
-         Quote (" routine", Test_Case'class (Test.all).Routine_Name) &
+      Log_In (Debug, Quote (" suite", Test_Case'class (Test.all).Name.all) &
+         Quote (" routine", Test_Case'class (Test.all).Routine_Name.all) &
          Tag_Name (" ", Test_Case'class(Test.all)'tag));
 --       " test address " & Image_Pointer (Test.all'address));
-      Log_Here (Debug, Quote ("check running suite", Test_Case'class (Test.all).Name) &
-         Quote (" routine", Test_Case'class (Test.all).Routine_Name) &
+      Log_Here (Debug, Quote ("check running suite", Test_Case'class (Test.all).Name.all) &
+         Quote (" routine", Test_Case'class (Test.all).Routine_Name.all) &
          (if Options.Filter = null then
             " filter is null"
          else

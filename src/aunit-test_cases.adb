@@ -47,7 +47,7 @@ package body AUnit.Test_Cases is
 -- procedure Add_Routine (T : in out Test_Case'Class; Val : Routine_Spec) is
    procedure Add_Routine (T : in out Test_Case; Val : Routine_Spec) is
    begin
-      Log_In (Debug, Quote ("routine name", Val.Routine_Name));
+      Log_In (Debug, Quote ("routine name", Val.Routine_Name.all));
       Routine_Lists.Append (T.Routines, Val);
       Log_Out (Debug);
    end Add_Routine;

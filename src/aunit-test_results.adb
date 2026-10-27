@@ -219,8 +219,8 @@ package body AUnit.Test_Results is
       use Result_Lists;
 
    begin
-      Log_In (Debug, Quote ("Test_Name", Test_Name) &
-         Quote (" Routine_Name", Routine_Name));
+      Log_In (Debug, Quote ("Test_Name", Test_Name.all) &
+         Quote (" Routine_Name", Routine_Name.all));
       Append (R.Result_List, Val);
       Log_Out (Debug);
    end Add_Success;
