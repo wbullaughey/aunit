@@ -1,0 +1,18 @@
+set LIB=static
+set ARCHITECTURE=windows
+set GCC_ARCHITECTURE=%ARCHITECTURE%
+set TARGET=release
+set PROJECT=ada_lib
+set USER=wayne
+echo PROJECT=%PROJECT%
+set PROJECT_DIRECTORY=%cd%
+echo PROJECT_DIRECTORY %PROJECT_DIRECTORY%
+set GPR_DIRECTORY=%PROJECT_DIRECTORY%\gpr
+echo GPR_DIRECTORY %GPR_DIRECTORY%
+SET HOUR=%time:~0,2%
+SET BUILD_DATE=%date:~-4%%date:~4,2%%date:~7,2%_%time:~0,2%%time:~3,2%%time:~6,2%
+echo BUILD_DATE %BUILD_DATE%
+echo %path%
+which gprbuild
+gprbuild -p -j10 -XUser=%USER% -XARCHITECTURE=windows -XPROJECT_DIRECTORY=%PROJECT_DIRECTORY% -P%PROJECT% -aP.. -aP. -aP%GPR_DIRECTORY%
+

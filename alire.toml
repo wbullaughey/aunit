@@ -1,0 +1,35 @@
+name = "aunit"
+description = ""
+version = "0.1.0-dev"
+
+authors = ["Your Name"]
+maintainers = ["Your Name <example@example.com>"]
+maintainers-logins = ["github-username"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+
+project-files = "aunit.gpr"
+
+tags = []
+
+[[depends-on]]
+alr_environment = "*"
+
+[[pins]]
+alr_environment = { path='..' }
+
+[[depends-on]]
+ada_lib_options = "~0.1.0-dev"
+
+[[pins]]
+ada_lib_options = { path='../ada_lib/ada_lib_options' }
+
+[[depends-on]]
+ada_lib_base = "~0.1.0-dev"
+
+[[pins]]
+ada_lib_base = { path="../ada_lib/ada_lib_base" }
+
+
+
+
